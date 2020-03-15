@@ -1,9 +1,9 @@
 import login
 from flask import *
 app=Flask('__name__')
-@app.route('/')
+@app.route('/', methods='GET','POST'])
 def index():
-	return 'wellcome to wp cracker'
+	return 'WELLCOME TO WP CRACKER'
 @app.route('/crack',methods=['GET','POST'])
 def auto_wp():
 	try:
@@ -25,4 +25,4 @@ def auto_wp():
 			return 'error'
 	except KeyError:
 		return 'list tidak ada'
-app.run(host='localhost',port=8000,debug=True)
+app.run(host='localhost',port=5000)
