@@ -1,7 +1,7 @@
 import login
 from flask import *
 app=Flask('__name__')
-@app.route('/', methods='GET','POST'])
+@app.route('/', methods=['GET','POST'])
 def index():
 	return 'WELLCOME TO WP CRACKER'
 @app.route('/crack',methods=['GET','POST'])
