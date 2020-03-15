@@ -1,5 +1,6 @@
 import login
 from flask import *
+import os
 app=Flask('__name__')
 @app.route('/', methods=['GET','POST'])
 def index():
@@ -25,4 +26,5 @@ def auto_wp():
 			return 'error'
 	except KeyError:
 		return 'list tidak ada'
-app.run(host='0.0.0.0',port=5000,debug=True)
+if __name__ == '__main__':
+	app.run(host='0.0.0.0',int(os.environ.get('PORT','5000')),debug=True)
