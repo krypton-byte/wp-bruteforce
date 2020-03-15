@@ -1,5 +1,6 @@
 import login
 from flask import *
+import dork
 import os
 app=Flask('__name__')
 @app.route('/', methods=['GET','POST'])
@@ -26,5 +27,14 @@ def auto_wp():
 			return 'error'
 	except KeyError:
 		return 'list tidak ada'
+@app.route('/dork',methods=['GET','POST'])
+def dork_term():
+	try:
+		keyword=request.form.get('keyword')
+		waktu=request.form.get('time')
+		page=request.form.get('page')
+		return dork.__start__(keyword,waktu,page)
+	except:
+		return 'error'
 if __name__ == '__main__':
 	app.run(host='0.0.0.0',port=int(os.environ.get('PORT','5000')),debug=True)
