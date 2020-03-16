@@ -38,9 +38,7 @@ def __start__(url,username,password):
 			return False
 		elif 'login_error' in ccc:
 			return False
-		elif 'Unknown username. Check again or try your email address.' in ccc:
-			return False
 		else:
-			return True
+			return False
 	else:
 		return False
