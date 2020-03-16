@@ -1,6 +1,5 @@
 import login as wp
 from flask import *
-import dork
 import os
 app=Flask('__name__')
 @app.route('/', methods=['GET','POST'])

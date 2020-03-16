@@ -13,15 +13,18 @@ def __start__(url,username,password):
 		'Cache-Control':'no-cache'
 		}
 	sesi=requests.Session()
-	requ=sesi.get(str(url)+'/wp-admin',headers=headers)
+	requ=sesi.get('%s/wp-admin'%(str(url)),headers=headers)
 	pars=bs(requ.text,'html.parser')
 	if ('user_login' in requ.text) and ('user_pass' in requ.text):
-		data_parsing={ 	'log':username,
+		data_parsing={
+				'log':username,
 				'pwd':password,
 				pars.find_all('input')[2]['name']:pars.find_all('input')[2]['value'],
 				pars.find_all('input')[3]['name']:pars.find_all('input')[3]['value'],
 				pars.find_all('input')[4]['name']:pars.find_all('input')[4]['value'],
-				pars.find_all('input')[5]['name']:pars.find_all('input')[5]['value']}
+				pars.find_all('input')[5]['name']:pars.find_all('input')[5]['value']
+				}
+
 		ccc=sesi.post(pars.find_all('form')[0]['action'],data=data_parsing,headers=headers,cookies=requ.cookies).text
 		if '<strong>ERROR</strong>: The password you entered for the username <strong>admin</strong> is incorrect.' in ccc:
 			return False
