@@ -13,7 +13,7 @@ def __start__(url,username,password):
 		'Cache-Control':'no-cache'
 		}
 	sesi=requests.Session()
-	requ=sesi.get(str(url)+'%s'%('/wp-admin'),headers=headers)
+	requ=sesi.get(str(url)+'/wp-admin',headers=headers)
 	pars=bs(requ.text,'html.parser')
 	if ('user_login' in requ.text) and ('user_pass' in requ.text):
 		data_parsing={ 	'log':username,

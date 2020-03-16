@@ -1,5 +1,6 @@
 import login as wp
 from flask import *
+import dork
 import os
 app=Flask('__name__')
 @app.route('/', methods=['GET','POST'])
@@ -17,7 +18,7 @@ def auto_wp():
 			return '{\'status\':\'sukses\',\'username\':\'%s\',\'password\':\'%s\',\'result\':\'%s\'}'%('admin','password',j)
 		else:
 			return '{\'status\':\'gagal\',\'result\':\'%s\'}'%(j)
-	except KeyError:
+	except:
 		return '{\'status\':\'gagal\',\'pesan\':\'tidak ada data yg di eksekusi\'}'
 @app.route('/force.php',methods=['GET','POST'])
 def login():
