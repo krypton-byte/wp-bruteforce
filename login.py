@@ -5,11 +5,6 @@ def __start__(url,username,password):
 		'User-Agent':'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.14; rv:65.0) Gecko/20100101 Firefox/65.0',
 		'Accept':'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
 		'Accept-Language':'en-us,en;q=0.5',
-		'Accept-Encoding':'gzip,deflate',
-		'Accept-Charset':'ISO-8859-1,utf-8;q=0.7,*;q=0.7',
-		'Keep-Alive':'300',
-		'Connection':'keep-alive',
-		'Pragma':'no-cache',
 		'Cache-Control':'no-cache'
 		}
 	sesi=requests.Session()
@@ -26,18 +21,8 @@ def __start__(url,username,password):
 				}
 
 		ccc=sesi.post(pars.find_all('form')[0]['action'],data=data_parsing,headers=headers,cookies=requ.cookies).text
-		if '<strong>ERROR</strong>: The password you entered for the username <strong>admin</strong> is incorrect.' in ccc:
-			return False
-		elif 'wordpress_logged_in' in ccc.lower():
+		if 'wordpress_logged_in' in ccc.lower():
 			return True
-		elif 'ERROR' in ccc.upper():
-			return False
-		elif 'empty' in ccc:
-			return False
-		elif 'incorrect' in ccc:
-			return False
-		elif 'login_error' in ccc:
-			return False
 		else:
 			return False
 	else:

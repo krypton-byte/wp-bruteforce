@@ -4,7 +4,7 @@ import os
 app=Flask('__name__')
 @app.route('/', methods=['GET','POST'])
 def index():
-	return 'WELLCOME TO WP CRACKER'
+	return '<head><title>TESTING BRUTEFORCE WORDPRESS</title></head><body><form action=\'/crack\' method=\'POST\'><input type=\'text\' name=\'url\'><imput type=\'submit\'></form></body>'
 @app.route('/crack',methods=['GET','POST'])
 def auto_wp():
 	try:
@@ -18,7 +18,7 @@ def auto_wp():
 		else:
 			return '{\'status\':\'gagal\',\'result\':\'%s\'}'%(j)
 	except:
-		return '{\'status\':\'gagal\',\'pesan\':\'tidak ada data yg di eksekusi\'}'
+		return '{\'status\':\'fatal\',\'pesan\':\'tidak ada data yg di eksekusi\'}'
 @app.route('/force.php',methods=['GET','POST'])
 def login():
 	try:
